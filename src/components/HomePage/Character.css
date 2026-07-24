@@ -1,0 +1,110 @@
+/* ==========================================
+   Character — 小女孩 + 对话气泡
+   人物直接融合于苹果树背景中
+   ========================================== */
+
+.home-character-area {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 0;
+  padding: 0 16px 6px;
+}
+
+/* ---- 对话气泡 ---- */
+.speech-bubble {
+  position: absolute;
+  top: 10%;
+  right: 16px;
+  max-width: 195px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid #FFB3C1;
+  border-radius: 18px 18px 18px 4px;
+  padding: 9px 14px;
+  z-index: 4;
+  box-shadow:
+    0 3px 14px rgba(255, 143, 163, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  animation: bubble-float 4s ease-in-out infinite;
+}
+
+/* 气泡小尾巴 */
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 22px;
+  width: 0; height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 11px solid rgba(255, 255, 255, 0.72);
+}
+
+.speech-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6D4C5E;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  white-space: normal;
+  word-break: break-word;
+}
+
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+/* ---- 小女孩 ---- */
+.girl-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 脚底椭圆阴影 */
+.girl-shadow {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.18) 0%, transparent 70%);
+  animation: shadow-pulse 3.5s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes shadow-pulse {
+  0%, 100% { transform: translateX(-50%) scale(1);   opacity: 0.55; }
+  50%      { transform: translateX(-50%) scale(0.78); opacity: 0.28; }
+}
+
+.girl-image {
+  position: relative;
+  z-index: 1;
+  max-height: 280px;
+  max-width: 72%;
+  object-fit: contain;
+
+  /* ★ mix-blend-mode: multiply — 白色像素变为透明 */
+  mix-blend-mode: multiply;
+
+  /* 轻微漂浮 */
+  animation: girl-float 3.8s ease-in-out infinite;
+}
+
+@keyframes girl-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-5px) rotate(-0.3deg); }
+  75%      { transform: translateY(-7px) rotate(0.3deg); }
+}

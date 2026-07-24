@@ -1,0 +1,103 @@
+/* ==========================================
+   EnterButton — 粉橙渐变胶囊 · 柔光呼吸
+   ========================================== */
+
+.btn-enter {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 260px;
+  height: 70px;
+  border: none;
+  border-radius: 9999px;
+
+  /* 左浅黄 → 右粉红渐变 */
+  background: linear-gradient(90deg, #FFEAA7 0%, #FFD88A 20%, #FFB3C1 58%, #FF8FA3 100%);
+
+  cursor: pointer;
+  box-shadow:
+    0 0 24px rgba(255, 175, 140, 0.48),
+    0 4px 16px rgba(255, 143, 163, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+  transition:
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s ease;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+  margin-bottom: 12px;
+}
+
+/* 外呼吸光晕 */
+.btn-enter::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #FFEAA7, #FFCCD5, #FF8FA3, #FFCCD5, #FFEAA7);
+  background-size: 300% 300%;
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(16px);
+  animation: btn-breathe 2.8s ease-in-out infinite;
+}
+
+@keyframes btn-breathe {
+  0%, 100% { opacity: 0.40; filter: blur(16px); }
+  50%      { opacity: 0.72; filter: blur(22px); }
+}
+
+/* Hover 放大 */
+.btn-enter:hover {
+  transform: scale(1.06);
+  box-shadow:
+    0 0 36px rgba(255, 175, 140, 0.62),
+    0 0 60px rgba(255, 143, 163, 0.40),
+    0 6px 20px rgba(255, 143, 163, 0.38);
+}
+
+/* 点击缩入 */
+.btn-enter:active {
+  transform: scale(0.93);
+  transition: transform 0.1s ease;
+}
+
+/* 点击涟漪 */
+.btn-enter--ripple::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.35);
+  animation: ripple-expand 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ripple-expand {
+  0%   { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+/* 苹果图标 */
+.btn-enter-icon {
+  width: 44px;
+  height: auto;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.10));
+  position: relative;
+  z-index: 1;
+}
+
+/* "进入" 文字 */
+.btn-enter-text {
+  font-family: 'ZCOOL KuaiLe', 'PingFang SC', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 4px rgba(180, 60, 90, 0.40);
+  position: relative;
+  z-index: 1;
+}

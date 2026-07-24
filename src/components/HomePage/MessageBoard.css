@@ -1,0 +1,101 @@
+/* ==========================================
+   MessageBoard — 底部留言卡片
+   毛玻璃 · 大圆角 · 粉色阴影
+   ========================================== */
+
+.message-board {
+  flex-shrink: 0;
+  z-index: 3;
+  width: calc(100% - 36px);
+  max-width: 340px;
+  padding: 16px 20px 18px;
+  margin-bottom: 18px;
+
+  /* 毛玻璃 */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-radius: 26px;
+  border: 1px solid rgba(255, 210, 225, 0.55);
+
+  /* 粉色柔光阴影 */
+  box-shadow:
+    0 4px 22px rgba(255, 160, 180, 0.22),
+    0 1px 4px  rgba(255, 180, 195, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+/* 标题行 + 爱心装饰 */
+.message-board-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.message-heart {
+  font-size: 15px;
+  animation: heart-pop 1.6s ease-in-out infinite;
+}
+.message-heart:nth-child(2) { animation-delay: 0.4s; }
+
+@keyframes heart-pop {
+  0%, 100% { transform: scale(1); }
+  18%      { transform: scale(1.28); }
+  36%      { transform: scale(1); }
+}
+
+.message-board-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #A88898;
+  letter-spacing: 3px;
+}
+
+/* 留言列表 */
+.message-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px;
+  background: rgba(255, 255, 255, 0.48);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 210, 220, 0.38);
+}
+
+.message-apple-icon {
+  width: 20px;
+  height: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(255, 143, 163, 0.22));
+}
+
+.message-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6D4C5E;
+  letter-spacing: 0.5px;
+}
+
+/* 加载中 */
+.message-item--loading {
+  justify-content: center;
+  color: #C4A8B2;
+  font-size: 13px;
+  letter-spacing: 2px;
+  animation: hint-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hint-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}

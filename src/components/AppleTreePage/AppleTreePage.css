@@ -1,0 +1,190 @@
+/* ==========================================
+   AppleTreePage — 苹果树页面
+   ========================================== */
+
+.tree-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ---- 背景图 ---- */
+.tree-bg-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.tree-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ---- 前景内容层 ---- */
+.tree-content-layer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- 顶部导航 ---- */
+.tree-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: linear-gradient(180deg,
+    rgba(0,0,0,0.3) 0%,
+    rgba(0,0,0,0.1) 80%,
+    transparent 100%
+  );
+  color: #fff;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-back:active {
+  background: rgba(255,255,255,0.35);
+}
+
+.tree-page-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.tree-top-spacer {
+  width: 60px;
+}
+
+/* ---- 互动区域 ---- */
+.tree-interaction-area {
+  flex: 1;
+  position: relative;
+}
+
+/* ---- 苹果元素 ---- */
+.apple-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 2;
+}
+
+.apple--1 { top: 18%; left: 58%; }
+.apple--2 { top: 38%; left: 28%; }
+.apple--3 { top: 36%; left: 72%; }
+
+.apple-image {
+  width: 60px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+  transition: transform 0.25s ease, filter 0.3s ease;
+}
+
+/* 漂浮动画（三个苹果不同节奏） */
+.apple--1 .apple-image {
+  animation: tree-apple-float-1 3s ease-in-out infinite;
+}
+.apple--2 .apple-image {
+  animation: tree-apple-float-2 3.4s ease-in-out 0.3s infinite;
+}
+.apple--3 .apple-image {
+  animation: tree-apple-float-3 2.8s ease-in-out 0.6s infinite;
+}
+
+@keyframes tree-apple-float-1 {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes tree-apple-float-2 {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes tree-apple-float-3 {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Hover 放大 */
+.apple-item:hover .apple-image {
+  animation-play-state: paused;
+  transform: scale(1.25);
+}
+
+/* 点击发光 */
+.apple-item:active .apple-image,
+.apple--glow .apple-image {
+  filter:
+    drop-shadow(0 0 12px rgba(255, 220, 100, 0.9))
+    drop-shadow(0 0 28px rgba(255, 200, 60, 0.7))
+    drop-shadow(0 0 48px rgba(255, 180, 30, 0.5));
+  transform: scale(1.1);
+}
+
+/* ---- 苹果标签 ---- */
+.apple-label {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow:
+    0 0 8px rgba(255, 180, 80, 0.8),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  transition: transform 0.25s ease;
+}
+
+.apple-item:hover .apple-label {
+  transform: scale(1.15);
+}
+
+/* ---- 底部提示 ---- */
+.tree-bottom-hint {
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(0,0,0,0.15) 40%,
+    rgba(0,0,0,0.25) 100%
+  );
+}
+
+.tree-bottom-hint p {
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  animation: hint-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hint-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}

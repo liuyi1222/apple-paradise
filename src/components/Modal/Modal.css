@@ -1,0 +1,98 @@
+/* ==========================================
+   Modal — 通用弹窗（错误/成功）
+   梦核柔光 · Q版圆润
+   ========================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: overlay-in 0.3s ease;
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-card {
+  width: 280px;
+  padding: 28px 24px 22px;
+  border-radius: 24px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 2px solid rgba(255, 179, 193, 0.6);
+  box-shadow:
+    0 8px 32px rgba(255, 143, 163, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  animation: card-pop 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes card-pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* 错误变体 — 粉色调 */
+.modal--error .modal-title {
+  color: #D98196;
+}
+
+/* 成功变体 — 暖金色调 */
+.modal--success .modal-title {
+  color: #E8A860;
+}
+
+.modal-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.modal-title {
+  font-family: 'ZCOOL KuaiLe', 'PingFang SC', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.modal-message {
+  font-size: 14px;
+  color: #8B7B85;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 32px;
+  background: linear-gradient(135deg, #FFB3C1 0%, #FF8FA3 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow:
+    0 3px 14px rgba(255, 143, 163, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-btn:active {
+  transform: scale(0.94);
+  box-shadow:
+    0 1px 6px rgba(255, 143, 163, 0.3);
+}

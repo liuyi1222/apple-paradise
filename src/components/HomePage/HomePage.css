@@ -1,0 +1,91 @@
+/* ==========================================
+   HomePage — 整体布局 + 花瓣 & 星星动画
+   手机竖屏 390×844 · 日系绘本插画风
+   ========================================== */
+
+.homepage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 主内容：从上到下依次排列 */
+.homepage-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================
+   花瓣 — 缓慢飘落旋转
+   ========================================== */
+.petal {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 50% 0 50% 0;
+  opacity: 0;
+}
+
+.petal--1 { width: 15px; height: 15px; background: rgba(255, 185, 200, 0.72); top: 10%; left: 8%;  animation: petal-drift-1 6.5s ease-in-out infinite; }
+.petal--2 { width: 10px; height: 10px; background: rgba(255, 220, 200, 0.70); top: 16%; right: 14%; animation: petal-drift-2 7.2s ease-in-out 1.0s infinite; }
+.petal--3 { width: 12px; height: 12px; background: rgba(255, 200, 210, 0.68); top: 28%; left: 5%;  animation: petal-drift-3 6.8s ease-in-out 2.2s infinite; }
+.petal--4 { width: 9px;  height: 9px;  background: rgba(255, 180, 195, 0.66); top: 24%; right: 9%;  animation: petal-drift-1 7.8s ease-in-out 0.5s infinite; }
+.petal--5 { width: 11px; height: 11px; background: rgba(255, 210, 190, 0.70); top: 36%; left: 86%; animation: petal-drift-2 6.2s ease-in-out 3.0s infinite; }
+.petal--6 { width: 14px; height: 14px; background: rgba(255, 190, 205, 0.64); top: 34%; left: 14%; animation: petal-drift-3 8.0s ease-in-out 1.6s infinite; }
+.petal--7 { width: 10px; height: 10px; background: rgba(255, 210, 188, 0.68); top: 20%; left: 76%; animation: petal-drift-1 7.0s ease-in-out 3.8s infinite; }
+.petal--8 { width: 13px; height: 13px; background: rgba(255, 188, 202, 0.65); top: 42%; right: 7%;  animation: petal-drift-2 6.5s ease-in-out 2.6s infinite; }
+
+@keyframes petal-drift-1 {
+  0%   { opacity: 0;   transform: translate(0, 0)   rotate(0deg)   scale(0.5); }
+  8%   { opacity: 0.78; }
+  85%  { opacity: 0.42; }
+  100% { opacity: 0;   transform: translate(32px, 160px) rotate(195deg) scale(1.0); }
+}
+@keyframes petal-drift-2 {
+  0%   { opacity: 0;   transform: translate(0, 0)   rotate(0deg)   scale(0.45); }
+  8%   { opacity: 0.72; }
+  85%  { opacity: 0.38; }
+  100% { opacity: 0;   transform: translate(-28px, 175px) rotate(-215deg) scale(1.05); }
+}
+@keyframes petal-drift-3 {
+  0%   { opacity: 0;   transform: translate(0, 0)   rotate(0deg)   scale(0.48); }
+  8%   { opacity: 0.70; }
+  85%  { opacity: 0.40; }
+  100% { opacity: 0;   transform: translate(26px, 185px) rotate(230deg) scale(0.95); }
+}
+
+/* ==========================================
+   星星 — 十字闪烁
+   ========================================== */
+.star {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+.star::before, .star::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 2px;
+}
+.star::before { width: 100%; height: 2px; top: 50%; left: 0; transform: translateY(-50%); }
+.star::after  { width: 2px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+
+.star--1 { width: 15px; height: 15px; top: 18%; left: 13%;  animation: star-twinkle 2.6s ease-in-out infinite; }
+.star--2 { width: 10px; height: 10px; top: 12%; right: 17%; animation: star-twinkle 3.1s ease-in-out 0.5s infinite; }
+.star--3 { width: 9px;  height: 9px;  top: 38%; left: 81%; animation: star-twinkle 2.9s ease-in-out 1.1s infinite; }
+.star--4 { width: 12px; height: 12px; top: 48%; right: 19%; animation: star-twinkle 3.3s ease-in-out 0.4s infinite; }
+.star--5 { width: 8px;  height: 8px;  top: 56%; left: 11%; animation: star-twinkle 2.4s ease-in-out 1.4s infinite; }
+.star--6 { width: 11px; height: 11px; top: 30%; left: 20%; animation: star-twinkle 2.8s ease-in-out 2.0s infinite; }
+.star--7 { width: 7px;  height: 7px;  top: 64%; right: 13%; animation: star-twinkle 3.5s ease-in-out 0.8s infinite; }
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.22; transform: rotate(0deg)  scale(0.65); }
+  50%      { opacity: 0.95; transform: rotate(45deg) scale(1.35); }
+}

@@ -1,0 +1,38 @@
+/* ==========================================
+   Title — 儿童绘本贴纸风
+   白色填充 · 粉色描边 · 立体投影
+   ========================================== */
+
+.home-title-area {
+  text-align: center;
+  padding-top: 68px;  /* 距离顶部约 80px（含 safe area） */
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+.home-title {
+  font-family: 'ZCOOL KuaiLe', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  font-size: 46px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 6px;
+  line-height: 1.1;
+
+  /* 贴纸描边 + 立体厚度 */
+  text-shadow:
+    /* 8方向粉色外描边 */
+    -2px -2px 0 #FF8FA3,
+     2px -2px 0 #FF8FA3,
+    -2px  2px 0 #FF8FA3,
+     2px  2px 0 #FF8FA3,
+    -1px  0   0 #FF8FA3,
+     1px  0   0 #FF8FA3,
+     0   -1px 0 #FF8FA3,
+     0    1px 0 #FF8FA3,
+    /* 立体厚度 — 两层加深 */
+     0   2px 0 #E87B90,
+     0   4px 0 #E06F84,
+    /* 底部柔和扩散 */
+     0   6px 16px rgba(190, 80, 110, 0.30),
+     0   2px 6px  rgba(0, 0, 0, 0.06);
+}
